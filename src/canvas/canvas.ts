@@ -21,15 +21,32 @@ export default abstract class CanvasAbstract {
 
   // 绘制模型
   protected drawModel(num: number) {
-    const position = this.position()
-    this.canvas.drawImage(images.get('straw')!, position.x, position.y, config.model.width, config.model.height)
+    this.positionCollection(num).forEach(position => {
+      this.canvas.drawImage(images.get('straw')!, position.x, position.y, config.model.width, config.model.height)
+    })
+  }
+
+  // 生成坐标集合（用于去重）
+  protected positionCollection(num: number) {
+    const collections = [] as { x: number; y: number }[]
+    for (let i = 0; i < num; i++) {
+      while (true) {
+        const position = this.position()
+        const exist = collections.some(item => item.x === position.x && position.y)
+        if (!exist) {
+          collections.push(this.position())
+          break
+        }
+      }
+    }
+    return collections
   }
 
   // 生成坐标
   protected position() {
     return {
-      x: 20,
-      y: 100,
+      x: Math.floor((Math.random() * config.canvas.width) / config.model.width) * config.model.width,
+      y: Math.floor((Math.random() * config.canvas.height) / config.model.height) * config.model.height,
     }
   }
 }
