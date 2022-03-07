@@ -1,23 +1,35 @@
-import { directionEnum } from '../enum/directionEnum'
 import { images } from './../service/image'
+import { directionEnum } from '../enum/directionEnum'
 import Model from './model'
-import _ from 'lodash'
 import config from '../config'
+import _ from 'lodash'
 
 export default class extends Model implements IModel {
   name: string = 'tank'
-  private direction: directionEnum = directionEnum.top
   render(): void {
-    this.randomDirection()
-    super.draw(this.randomImage())
+    this.move()
+  }
+  // 移动
+  private move(): void {
+    switch (this.direction) {
+      case directionEnum.top:
+        this.y += 2
+        break
+      case directionEnum.right:
+        this.x += 2
+        break
+      case directionEnum.bottom:
+        this.y -= 2
+        break
+      case directionEnum.left:
+        this.x -= 2
+        break
+    }
+    this.draw()
   }
 
-  randomDirection() {
-    const random = Math.floor(Math.random() * 4)
-    this.direction = Object.keys(directionEnum)[random] as directionEnum
-  }
-
-  randomImage() {
+  // 插入图片
+  image() {
     const name = this.name + _.upperFirst(this.direction)
     return images.get(name as keyof typeof config.images)!
   }

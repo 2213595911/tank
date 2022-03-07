@@ -5,6 +5,10 @@ interface IModelConstructor {
 }
 
 interface IModel {
+  canvas: CanvasRenderingContext2D
+  x: number
+  y: number
   render(): void
   createModels?(): void
+  image(): HTMLImageElement
 }

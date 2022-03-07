@@ -32,6 +32,8 @@ export default abstract class CanvasAbstract {
 
   // 渲染模型
   protected renderModels() {
-    this.models.forEach(model => model.render())
+    this.models.forEach(model => {
+      model.render()
+    })
   }
 }
