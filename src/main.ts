@@ -1,3 +1,4 @@
+import steel from './canvas/steel'
 import './canvas/straw'
 import straw from './canvas/straw'
 import wall from './canvas/wall'
@@ -15,6 +16,7 @@ async function bootstrap() {
   straw.render()
   wall.render()
   water.render()
+  steel.render()
 }
 
 void bootstrap()
