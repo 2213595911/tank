@@ -1,6 +1,7 @@
 import config from '../config'
 
 export default abstract class Model {
+  abstract name: string
   abstract render(): void
   constructor(protected canvas: CanvasRenderingContext2D, protected x: number, protected y: number) {}
 
