@@ -1,5 +1,6 @@
 import './canvas/straw'
 import straw from './canvas/straw'
+import wall from './canvas/wall'
 import config from './config'
 import { loadImage } from './service/image'
 import './style.scss'
@@ -11,6 +12,7 @@ async function bootstrap() {
   el.style.height = config.canvas.height + 'px'
 
   straw.render()
+  wall.render()
 }
 
 void bootstrap()

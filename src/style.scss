@@ -9,5 +9,9 @@ body {
     width: 900px;
     height: 600px;
     background-color: #34495e;
+    position: relative;
+    canvas {
+      position: absolute;
+    }
   }
 }
