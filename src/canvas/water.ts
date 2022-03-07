@@ -2,7 +2,7 @@ import config from '../config'
 import CanvasAbstract from './canvas'
 import Model from '../model/water'
 
-class Water extends CanvasAbstract implements IModel {
+class Water extends CanvasAbstract {
   num: number = config.water.num
   Model: IModelConstructor = Model
 

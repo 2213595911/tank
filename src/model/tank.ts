@@ -3,6 +3,9 @@ import { directionEnum } from '../enum/directionEnum'
 import Model from './model'
 import config from '../config'
 import _ from 'lodash'
+import water from '../canvas/water'
+import steel from '../canvas/steel'
+import wall from '../canvas/wall'
 
 export default class extends Model implements IModel {
   name: string = 'tank'
@@ -11,9 +14,9 @@ export default class extends Model implements IModel {
   }
   // 移动
   protected move(): void {
-    let x = this.x
-    let y = this.y
     while (true) {
+      let x = this.x
+      let y = this.y
       switch (this.direction) {
         case directionEnum.top:
           y--
@@ -43,9 +46,17 @@ export default class extends Model implements IModel {
   protected isTouch(x: number, y: number): boolean {
     if (x < 0 || x + config.model.width > this.width || y < 0 || y + config.model.height > this.height) {
       return true
-    } else {
-      return false
     }
+    const models = [...water.models, ...steel.models, ...wall.models]
+    return models.some(model => {
+      const state =
+        x + config.model.width <= model.x ||
+        x >= model.x + config.model.width ||
+        y + config.model.height <= model.y ||
+        y >= model.y + config.model.height
+
+      return !state
+    })
   }
 
   // 插入图片

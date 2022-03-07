@@ -4,8 +4,7 @@ export default abstract class CanvasAbstract {
   abstract num: number
   abstract Model: IModelConstructor
   abstract render(): void
-
-  protected models: IModel[] = []
+  public models: IModel[] = []
 
   constructor(
     protected el = document.createElement('canvas')!,
