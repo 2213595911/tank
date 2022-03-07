@@ -6,4 +6,5 @@ interface IModelConstructor {
 
 interface IModel {
   render(): void
+  createModels?(): void
 }

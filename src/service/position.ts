@@ -20,7 +20,7 @@ class Position {
   }
 
   // 生成坐标
-  protected position() {
+  public position() {
     return {
       // 减5存在疑问
       x: Math.floor(Math.random() * (config.canvas.width / config.model.width)) * config.model.width,

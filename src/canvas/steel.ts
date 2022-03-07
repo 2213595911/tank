@@ -3,11 +3,11 @@ import CanvasAbstract from './canvas'
 import Model from '../model/steel'
 
 class Steel extends CanvasAbstract {
-  constructor() {
-    super()
-    super.createModels(config.steel.num, Model)
-  }
+  num: number = config.steel.num
+  Model: IModelConstructor = Model
+
   render(): void {
+    super.createModels()
     super.renderModels()
   }
 }
