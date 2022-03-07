@@ -1,6 +1,7 @@
 import './canvas/straw'
 import straw from './canvas/straw'
 import wall from './canvas/wall'
+import water from './canvas/water'
 import config from './config'
 import { loadImage } from './service/image'
 import './style.scss'
@@ -13,6 +14,7 @@ async function bootstrap() {
 
   straw.render()
   wall.render()
+  water.render()
 }
 
 void bootstrap()
