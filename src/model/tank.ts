@@ -10,22 +10,42 @@ export default class extends Model implements IModel {
     this.move()
   }
   // 移动
-  private move(): void {
-    switch (this.direction) {
-      case directionEnum.top:
-        this.y += 2
+  protected move(): void {
+    let x = this.x
+    let y = this.y
+    while (true) {
+      switch (this.direction) {
+        case directionEnum.top:
+          y--
+          break
+        case directionEnum.right:
+          x++
+          break
+        case directionEnum.bottom:
+          y++
+          break
+        case directionEnum.left:
+          x--
+          break
+      }
+      if (this.isTouch(x, y)) {
+        this.randomDirection()
+      } else {
+        this.x = x
+        this.y = y
         break
-      case directionEnum.right:
-        this.x += 2
-        break
-      case directionEnum.bottom:
-        this.y -= 2
-        break
-      case directionEnum.left:
-        this.x -= 2
-        break
+      }
     }
     this.draw()
+  }
+
+  // 碰撞检测
+  protected isTouch(x: number, y: number): boolean {
+    if (x < 0 || x + config.model.width > this.width || y < 0 || y + config.model.height > this.height) {
+      return true
+    } else {
+      return false
+    }
   }
 
   // 插入图片

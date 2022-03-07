@@ -12,7 +12,7 @@ class Tank extends CanvasAbstract {
     // 渲染坦克
     setInterval(() => {
       this.renderModels()
-    }, 50)
+    }, config.runtime)
   }
 
   // 渲染模型
