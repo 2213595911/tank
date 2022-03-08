@@ -1,14 +1,38 @@
 /// <reference types="vite/client" />
 
+import {directionEnum} from './enum/directionEnum'
+
 interface IModelConstructor {
-  new (canvas: CanvasRenderingContext2D, x: number, y: number): IModel
+  new(x: number, y: number): IModel
+}
+
+interface BulletModelConstructor {
+  new(tank: IModel): IModel
 }
 
 interface IModel {
-  canvas: CanvasRenderingContext2D
+  name: string
+  canvas: ICanvas
+  direction: directionEnum
+  tank?: IModel
   x: number
   y: number
+  width: number
+  height: number
+
   render(): void
-  createModels?(): void
+
   image(): HTMLImageElement
+
+  removeModel(): void
+}
+
+interface ICanvas {
+  num: number
+  Model: IModelConstructor | BulletModelConstructor
+  canvas: CanvasRenderingContext2D
+
+  removeModel(model: IModel): void
+
+  renderModels(): void
 }

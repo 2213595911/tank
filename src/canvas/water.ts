@@ -1,6 +1,7 @@
 import config from '../config'
 import CanvasAbstract from './canvas'
 import Model from '../model/water'
+import {IModelConstructor} from "../vite-env";
 
 class Water extends CanvasAbstract {
   num: number = config.water.num
@@ -12,4 +13,4 @@ class Water extends CanvasAbstract {
   }
 }
 
-export default new Water()
+export default new Water('water')

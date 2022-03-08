@@ -6,9 +6,10 @@ import tankTop from './static/images/tank/top.gif'
 import tankRight from './static/images/tank/right.gif'
 import tankBottom from './static/images/tank/bottom.gif'
 import tankLeft from './static/images/tank/left.gif'
+import bullet from './static/images/bullet/bullet.jpg'
 
 export default {
-  runtime: 50,
+  runtime: 20,
   canvas: {
     width: 900,
     height: 600,
@@ -26,6 +27,7 @@ export default {
     tankRight,
     tankBottom,
     tankLeft,
+    bullet,
   },
   straw: {
     num: 100,

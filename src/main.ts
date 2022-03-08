@@ -1,3 +1,4 @@
+import bullet from './canvas/bullet'
 import steel from './canvas/steel'
 import './canvas/straw'
 import straw from './canvas/straw'
@@ -5,7 +6,7 @@ import tank from './canvas/tank'
 import wall from './canvas/wall'
 import water from './canvas/water'
 import config from './config'
-import { loadImage } from './service/image'
+import {loadImage} from './service/image'
 import './style.scss'
 
 async function bootstrap() {
@@ -19,6 +20,7 @@ async function bootstrap() {
   water.render()
   steel.render()
   tank.render()
+  bullet.render()
 }
 
 void bootstrap()

@@ -2,6 +2,7 @@ import config from '../config'
 import CanvasAbstract from './canvas'
 import Model from '../model/tank'
 import position from '../service/position'
+import {IModelConstructor} from '../vite-env'
 
 class Tank extends CanvasAbstract {
   num: number = config.tank.num
@@ -16,7 +17,7 @@ class Tank extends CanvasAbstract {
   }
 
   // 渲染模型
-  protected renderModels() {
+  public renderModels() {
     this.canvas.clearRect(0, 0, config.canvas.width, config.canvas.height)
     this.models.forEach(model => model.render())
   }
@@ -25,10 +26,10 @@ class Tank extends CanvasAbstract {
   createModels(): void {
     for (let i = 0; i < this.num; i++) {
       const pos = position.position()
-      const instance = new this.Model(this.canvas, pos.x, 0)
+      const instance = new this.Model(pos.x, 0)
       this.models.push(instance)
     }
   }
 }
 
-export default new Tank()
+export default new Tank('tank')

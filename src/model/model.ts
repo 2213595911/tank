@@ -1,27 +1,49 @@
-import { directionEnum } from '../enum/directionEnum'
-import _ from 'lodash'
+import {directionEnum} from '../enum/directionEnum'
 import config from '../config'
+import {ICanvas, IModel} from '../vite-env'
 
-export default abstract class Model {
-  protected direction: directionEnum = directionEnum.top
-  protected width: number = config.canvas.width
-  protected height: number = config.canvas.height
+export default abstract class ModelAbstract {
+  public direction: directionEnum = directionEnum.top
+  public width: number = config.model.width
+  public height: number = config.model.height
   abstract name: string
+
   abstract render(): void
+
   abstract image(): HTMLImageElement
 
-  constructor(public canvas: CanvasRenderingContext2D, public x: number, public y: number) {
+  abstract canvas: ICanvas
+
+  constructor(public x: number, public y: number) {
     this.randomDirection()
+  }
+
+  // 删除模型
+  public removeModel() {
+    this.canvas.removeModel(this)
   }
 
   // 随机生成方向
   protected randomDirection() {
-    const random = Math.floor(Math.random() * 4)
-    this.direction = Object.keys(directionEnum)[random] as directionEnum
+    this.direction = Object.keys(directionEnum)[Math.floor(Math.random() * 4)] as directionEnum
   }
 
-  // 画坦克
+  // 画
   protected draw() {
-    this.canvas.drawImage(this.image(), this.x, this.y, config.model.width, config.model.height)
+    this.canvas.canvas.drawImage(this.image(), this.x, this.y, this.width, this.height)
+  }
+
+  // 爆炸
+  protected blast(model: IModel) {
+    Array(...Array(8).keys()).reduce((promise, index) => {
+      return new Promise(resolve => {
+        const img = new Image()
+        img.src = `/src/static/images/blasts/blast${index}.gif`
+        img.onload = () => {
+          this.canvas.canvas.drawImage(img, model.x, model.y, 30, 30)
+          resolve(promise)
+        }
+      })
+    }, Promise.resolve())
   }
 }

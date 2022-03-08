@@ -1,6 +1,7 @@
 import config from '../config'
 import CanvasAbstract from './canvas'
 import Model from '../model/steel'
+import {IModelConstructor} from '../vite-env'
 
 class Steel extends CanvasAbstract {
   num: number = config.steel.num
@@ -12,4 +13,4 @@ class Steel extends CanvasAbstract {
   }
 }
 
-export default new Steel()
+export default new Steel('steel')
