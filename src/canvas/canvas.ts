@@ -19,6 +19,14 @@ export default abstract class CanvasAbstract {
     this.createCanvas()
   }
 
+  // 创建模型
+  protected createModels() {
+    position.getCollection(this.num).forEach(position => {
+      const instance = new (this.Model as IModelConstructor)(position.x, position.y)
+      this.models.push(instance)
+    })
+  }
+
   // 渲染模型
   public renderModels() {
     this.canvas.clearRect(0, 0, config.canvas.width, config.canvas.height)
@@ -41,11 +49,4 @@ export default abstract class CanvasAbstract {
     this.app.appendChild(this.el)
   }
 
-  // 创建模型
-  protected createModels() {
-    position.getCollection(this.num).forEach(position => {
-      const instance = new (this.Model as IModelConstructor)(position.x, position.y)
-      this.models.push(instance)
-    })
-  }
 }

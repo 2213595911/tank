@@ -1,6 +1,7 @@
 import {directionEnum} from '../enum/directionEnum'
 import config from '../config'
 import {ICanvas, IModel} from '../vite-env'
+import audio from "../service/audio";
 
 export default abstract class ModelAbstract {
   public direction: directionEnum = directionEnum.top
@@ -35,14 +36,17 @@ export default abstract class ModelAbstract {
 
   // 爆炸
   protected blast(model: IModel) {
-    Array(...Array(8).keys()).reduce((promise, index) => {
+    audio.blast()
+    void Array(...Array(8).keys()).reduce((promise, index) => {
       return new Promise(resolve => {
-        const img = new Image()
-        img.src = `/src/static/images/blasts/blast${index}.gif`
-        img.onload = () => {
-          this.canvas.canvas.drawImage(img, model.x, model.y, 30, 30)
-          resolve(promise)
-        }
+        setTimeout(() => {
+          const img = new Image()
+          img.src = `/src/static/images/blasts/blast${index}.gif`
+          img.onload = () => {
+            this.canvas.canvas.drawImage(img, model.x, model.y, 30, 30)
+            resolve(promise)
+          }
+        }, 100)
       })
     }, Promise.resolve())
   }

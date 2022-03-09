@@ -5,11 +5,19 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+
   #app {
     width: 900px;
     height: 600px;
+    border: 10px solid #333;
     background-color: #34495e;
+    background-image: url("/src/static/images/cover/cover.png");
+    background-size: cover;
+    box-sizing: content-box;
+    cursor: pointer;
+    background-position: center;
     position: relative;
+
     canvas {
       position: absolute;
     }

@@ -7,13 +7,19 @@ import {IModelConstructor} from '../vite-env'
 class Tank extends CanvasAbstract {
   num: number = config.tank.num
   Model: IModelConstructor = Model
+  interval = 0
 
   render(): void {
     this.createModels()
     // 渲染坦克
-    setInterval(() => {
+    this.interval = setInterval(() => {
       this.renderModels()
     }, config.runtime)
+  }
+
+  // 停止渲染
+  stop() {
+    clearInterval(this.interval)
   }
 
   // 渲染模型

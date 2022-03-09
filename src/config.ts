@@ -7,6 +7,12 @@ import tankRight from './static/images/tank/right.gif'
 import tankBottom from './static/images/tank/bottom.gif'
 import tankLeft from './static/images/tank/left.gif'
 import bullet from './static/images/bullet/bullet.jpg'
+import boss from './static/images/boss/boss.png'
+import playTop from './static/images/player/top.gif'
+import playRight from './static/images/player/right.gif'
+import playBottom from './static/images/player/bottom.gif'
+import playLeft from './static/images/player/left.gif'
+
 
 export default {
   runtime: 20,
@@ -28,12 +34,23 @@ export default {
     tankBottom,
     tankLeft,
     bullet,
+    boss,
+    playTop,
+    playRight,
+    playBottom,
+    playLeft
+  },
+  play: {
+    num: 1
+  },
+  boss: {
+    num: 1
   },
   straw: {
-    num: 100,
+    num: 50,
   },
   wall: {
-    num: 50,
+    num: 20,
   },
   water: {
     num: 20,
@@ -42,6 +59,6 @@ export default {
     num: 20,
   },
   tank: {
-    num: 20,
+    num: 10,
   },
 }

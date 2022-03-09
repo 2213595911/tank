@@ -3,6 +3,7 @@ import wall from './canvas/wall'
 import water from './canvas/water'
 import config from './config'
 import {IModel} from './vite-env'
+import boss from "./canvas/boss";
 
 export default {
   // 超出画布
@@ -16,11 +17,9 @@ export default {
       y: number,
       width = config.model.width,
       height = config.model.height,
-      models = [...water.models, ...steel.models, ...wall.models]
+      models = [...water.models, ...steel.models, ...wall.models, ...boss.models]
   ): IModel | undefined {
     return models.find(model => {
-      // const state = x + width <= model.x || x >= model.x + width || y + height <= model.y || y >= model.y + height
-      // return !state
       const state = x + width <= model.x || x >= model.x + model.width || y + height <= model.y || y >= model.y + model.height
       return !state
     })
