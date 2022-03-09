@@ -81,4 +81,4 @@ $ nodemon main.js
 ![img_2.png](md/images/img_2.png)
 ![img_1.png](md/images/img_1.png)
 
-在线预览地址：[tank.langya11.icu](tank.langya11.icu)
+在线预览地址：[tank.langya11.icu](http://tank.langya11.icu)
