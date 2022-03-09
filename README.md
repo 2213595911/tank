@@ -59,6 +59,7 @@ app -> 启动文件
 main -> 入口文件
 style.scss -> 样式文件
 vite-env.d.ts -> 类型声名文件
+config.ts -> 配置文件（重要）
 ````
 
 ## 后端运行
