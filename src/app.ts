@@ -16,6 +16,7 @@ export default {
   isStart: false,
   state: 10,
   interval: 0,
+  // 预加载
   boostrap() {
     const el = document.querySelector<HTMLDivElement>('#app')!
     el.style.width = config.canvas.width + 'px'
@@ -35,6 +36,8 @@ export default {
       }
     })
   },
+
+  // 游戏结束
   async stop() {
     console.log('游戏结束')
     clearInterval(this.interval)
@@ -43,6 +46,7 @@ export default {
     this.text()
   },
 
+  // 结束文字
   text() {
     const el = document.createElement('canvas')!
     el.width = config.canvas.width
@@ -56,6 +60,7 @@ export default {
     canvas.fillText(text, config.canvas.width / 2, config.canvas.height / 2)
     document.querySelector('#app')!.appendChild(el)
   },
+  // 开始游戏
   async start() {
     await Promise.all(loadImage())
     straw.render()

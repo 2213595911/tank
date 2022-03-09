@@ -49,23 +49,6 @@ export default class extends ModelAbstract implements IModel {
     super.draw()
   }
 
-  // // 碰撞检测
-  // protected isTouch(x: number, y: number): boolean {
-  //   if (x < 0 || x + config.model.width > this.width || y < 0 || y + config.model.height > this.height) {
-  //     return true
-  //   }
-  //   const models = [...water.models, ...steel.models, ...wall.models]
-  //   return models.some(model => {
-  //     const state =
-  //       x + config.model.width <= model.x ||
-  //       x >= model.x + config.model.width ||
-  //       y + config.model.height <= model.y ||
-  //       y >= model.y + config.model.height
-
-  //     return !state
-  //   })
-  // }
-
   // 插入图片
   image() {
     const name = this.name + _.upperFirst(this.direction)
